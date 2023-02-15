@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\Game.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\FullscreenQuad_ps.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\FullscreenQuad_vs.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\GeometricPrimitiveDebugShader_ps.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\GeometricPrimitiveDebugShader_vs.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\geometric_primitive_ps.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\geometric_primitive_vs.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\Resolve.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\SkinnedMeshCreateSoftShadow_PS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\SkinnedMeshOfShadow_VS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\SkinnedMeshWithShadow_PS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\SkinnedMeshWithShadow_VS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\skinned_mesh_ps.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\skinned_mesh_vs.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\SkyBoxSkinnedMesh_PS.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\Sprite3D_ps.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\Sprite3D_vs.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\sprite_ps.cso</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\2210102\デスクトップ\GameEngine\x64\Release\sprite_vs.cso</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
