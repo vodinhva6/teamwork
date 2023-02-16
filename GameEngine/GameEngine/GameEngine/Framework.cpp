@@ -8,9 +8,9 @@
 #include "DataBase.h"
 Framework::Framework()
 {
-	frameBuffer_SIZE = { 1280,720 };
+	frameBuffer_SIZE = { 1080,720 };
 	hwnd = {};
-	WINDOW_WIDTH = 1280;
+	WINDOW_WIDTH = 1080;
 	WINDOW_HEIGHT = 720;
 
 	FULLSCREEN = FALSE;

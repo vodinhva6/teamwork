@@ -13,8 +13,7 @@ enum class SceneName
     Game,
     Over,
     Clear,
-    Menu,
-    Stage
+    Menu
 };
 
 class Scene
@@ -23,10 +22,10 @@ public:
 
     Scene();
     virtual void reset() {}
-    virtual void init() = 0;
-    virtual void update(float elapsed_time) = 0;
+    virtual void init();
+    virtual void update(float elapsed_time);
     virtual void draw();
-    virtual void release() {}
+    virtual void release();
     virtual ~Scene();
     void setPause(bool pause) { this->pause = pause; }
 
