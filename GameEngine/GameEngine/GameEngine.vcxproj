@@ -33,6 +33,7 @@
     <ClInclude Include="GameCode\SceneStage.h" />
     <ClInclude Include="GameCode\SceneTitle.h" />
     <ClInclude Include="GameCode\SpawnEnemyManager.h" />
+    <ClInclude Include="GameCode\StageManager.h" />
     <ClInclude Include="GameEngine\AudioManager.h" />
     <ClInclude Include="GameEngine\BlendStateManager.h" />
     <ClInclude Include="GameEngine\BoundingCapsule.h" />
@@ -107,6 +108,7 @@
     <ClCompile Include="GameCode\SceneStage.cpp" />
     <ClCompile Include="GameCode\SceneTitle.cpp" />
     <ClCompile Include="GameCode\SpawnEnemyManager.cpp" />
+    <ClCompile Include="GameCode\StageManager.cpp" />
     <ClCompile Include="GameEngine\AudioManager.cpp" />
     <ClCompile Include="GameEngine\BlendStateManager.cpp" />
     <ClCompile Include="GameEngine\BoundingCapsule.cpp" />
@@ -348,7 +350,7 @@
       <ConformanceMode>true</ConformanceMode>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>$(SolutionDir)cereal-master\include;$(SolutionDir)Effekseer\include;$(SolutionDir)DirectXTK\Inc;$(SolutionDir)FBX_SDK\include;$(SolutionDir)GameEngine\GameEngine;$(SolutionDir)GameEngine\GameCode;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
       <ProgramDataBaseFileName>$(OutDir)$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <LanguageStandard_C>Default</LanguageStandard_C>
     </ClCompile>
