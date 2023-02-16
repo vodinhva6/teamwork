@@ -44,6 +44,7 @@ private:
     void CreateObjectForTitleScene();
     void CreateObjectForGameScene();
     void CreateObjectForClearScene();
+    void CreateObjectForStageScene();
 };
 #endif // !OBJECTMANAGER_H
 

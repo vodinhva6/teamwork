@@ -1,42 +1,40 @@
 #include "SceneStage.h"
 #include "GraphicEngine.h"
 #include "SceneManager.h"
+#include "InputManager.h"
 #include "DataBase.h"
 SceneStage::SceneStage()
 {
-    back_ = GraphicEngine::get()->createSprite(L"./Data/Asset/Images/Background/stage.png");
+    sceneName = SceneName::Stage;
 }
 
 void SceneStage::init()
 {
-    //CameraManager* cameraManager = CameraManager::get();
+    ObjectManager::get()->CreateAllObject(sceneName);
+
     GraphicEngine* graphicEngine = GraphicEngine::get();
 
     graphicEngine->getGameMode();
-
-    //cameraManager->setActiveControl(false);
-    //cameraManager->Change3DTo2D(1.0f);
-
-   
-    choss = 0;
-    oldchoss = 0;
-
-    //AudioManager::get()->stopAll();
-    //AudioManager::get()->playMusic(MAINBGM, true);
-    //AudioManager::get()->setMusicVolume(MAINBGM, 0.1f);
 }
 
 void SceneStage::update(float elapsed_time)
 {
-    oldchoss = choss;
+    // Transition To SceneGame
+    if (InputManager::get()->getMousePoint()->onClick())
+        SceneManager::get()->changeScene(SCENEGAME, 30);
     ObjectManager::get()->ObjectUpdate(elapsed_time);
 }
 
 void SceneStage::draw()
 {
-    ObjectManager::get()->ObjectDraw();
+    //  ObjectManager::get()->ObjectDraw();
+    //  GraphicEngine* graph = GraphicEngine::get();
+    //  graph->drawBackgroudSpriteEarly(back_, { 0,0 }, { 1920,1080 }, 0);
+
     GraphicEngine* graph = GraphicEngine::get();
-    graph->drawBackgroudSpriteEarly(back_, { 0,0 }, { 1920,1080 }, 0);
+    ObjectManager::get()->ObjectDraw();
+
+    graph->textOut(0, "SceneStage", { 500,500 }, 1, { 1,1,1,1 }, 1, false);
 }
 
 void SceneStage::release()

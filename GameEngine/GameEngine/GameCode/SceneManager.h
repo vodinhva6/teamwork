@@ -8,6 +8,7 @@
 #define SCENEGAME  "SCENEGAME"
 #define SCENECLEAR  "SCENECLEAR"
 #define SCENEMENU "SCENEMENU"
+#define SCENESTAGE "SCENESTAGE"
 
 class SceneManager : public SingletonPatternTemplate<SceneManager>
 {
@@ -31,7 +32,6 @@ public:
     bool changeScene(std::string sceneName, int delayTimer);
     Sprite* loadingScr[2];
 
-    int getStage() { return stage; }
     void saveGame();
     void loadGame();
     bool checkHadFileLoadGame();
@@ -42,7 +42,6 @@ private:
     std::map<std::string, std::shared_ptr<Scene>> listScene;
     Scene* sceneNow;
     Scene* sceneNext;
-    int stage;
     int timer;
 };
 

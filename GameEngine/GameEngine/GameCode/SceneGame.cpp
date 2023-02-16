@@ -17,7 +17,7 @@ static int at = 4;
 void SceneGame::init()
 {
     timer = 0;
-    int stage = SceneManager::get()->getStage();
+    // int stage = SceneManager::get()->getStage();
     ObjectManager::get()->CreateAllObject(sceneName);
 }
 

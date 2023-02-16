@@ -113,6 +113,8 @@ void ObjectManager::CreateAllObject(SceneName sceneName)
         break;
     case SceneName::Menu:
         break;
+    case SceneName::Stage:
+        CreateObjectForStageScene();
     default:
         break;
     }
@@ -232,6 +234,11 @@ void ObjectManager::CreateObjectForGameScene()
 }
 
 void ObjectManager::CreateObjectForClearScene()
+{
+
+}
+
+void ObjectManager::CreateObjectForStageScene()
 {
 
 }

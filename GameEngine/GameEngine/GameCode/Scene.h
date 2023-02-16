@@ -13,7 +13,8 @@ enum class SceneName
     Game,
     Over,
     Clear,
-    Menu
+    Menu,
+    Stage
 };
 
 class Scene
