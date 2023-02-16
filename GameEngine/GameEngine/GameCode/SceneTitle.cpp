@@ -19,6 +19,7 @@ void SceneTitle::update(float elapsed_time)
 {
     if (InputManager::get()->getMousePoint()->onClick())
         SceneManager::get()->changeScene(SCENEGAME, 30);
+    int a = 1;
     ObjectManager::get()->ObjectUpdate(elapsed_time);
 }
 
