@@ -1,7 +1,7 @@
 ﻿#include "ObjectManager.h"
-#include "Scene.h"
 #include "DataBase.h"
 #include "GraphicEngine.h"
+#include "Scene.h"
 ObjectManager::ObjectManager()
 {
     player = nullptr;
@@ -96,6 +96,28 @@ void ObjectManager::CreateOver2DButton()
     if (button) object2DList.push_back(button);
 }
 
+void ObjectManager::CreateAllObject(SceneName sceneName)
+{
+    switch (sceneName)
+    {
+    case SceneName::Title:
+        CreateObjectForTitleScene();
+        break;
+    case SceneName::Game:
+        CreateObjectForGameScene();
+        break;
+    case SceneName::Over:
+        break;
+    case SceneName::Clear:
+        CreateObjectForClearScene();
+        break;
+    case SceneName::Menu:
+        break;
+    default:
+        break;
+    }
+}
+
 void ObjectManager::createObject3D(int stage)
 {
     //DataBase* dataBas = DataBase::get();
@@ -153,7 +175,7 @@ void ObjectManager::ObjectUpdate(float elapsed_time)
 }
 
 
-void ObjectManager::resetObject()
+void ObjectManager::ClearAllObject()
 {
     for (std::list<OBJ3D*>::iterator it = object3DList.begin(); it != object3DList.end();)
     {
@@ -196,5 +218,21 @@ void ObjectManager::ObjectDraw()
     {
         if (it) it->draw();
     }
+}
+
+void ObjectManager::CreateObjectForTitleScene()
+{
+    Button* exitButton = DataBase::get()->CreateEndButton();
+    object2DList.push_back(exitButton);
+}
+
+void ObjectManager::CreateObjectForGameScene()
+{
+
+}
+
+void ObjectManager::CreateObjectForClearScene()
+{
+
 }
 

@@ -2,7 +2,6 @@
 #include "OBJ3D.h"
 #include "InputManager.h"
 
-OBJ3D* aac;
 
 void GraphicEngine::CreateCOM(ID3D11Device* device, IDXGISwapChain1* swapChain, const SIZE& frameSize)
 {
@@ -38,13 +37,6 @@ void GraphicEngine::Init()
 	}
 
 	exitGame = false;
-	aac = new OBJ3D;
-	ShaderData shaderData = { "./Data/Shaders/skinned_mesh_vs.cso", "./Data/Shaders/skinned_mesh_ps.cso" };
-	aac->mesh_ = createSkinnedMesh("./Data/Asset/3DObject/Player/player.fbx", false, SkinnedMeshObjectAxis::DEFAULT, shaderData, { 0,0.0f,0 });
-	aac->scale_ = { 1,1,1 };
-	aac->color_ = { 1,1,1,1 };
-	aac->position_ = { 0,0,0 };
-	aac->size_ = 10;
 
 }
 
@@ -67,7 +59,6 @@ void GraphicEngine::Update(float elapsedTime)
 	ImGui::End();
 
 #endif // !USE_IMGUI
-	aac->update(elapsedTime);
 	
 
 	UpdateResources();
@@ -79,17 +70,12 @@ void GraphicEngine::Update(float elapsedTime)
 
 void GraphicEngine::Render()
 {
-	aac->draw();
 	ClearRenderTagertAndDepthStencil({ 0.5f,0.5f,0.5f,1 });
 	framebufferManager.get()->ClearAllBuffer(immediateContext.Get());
 	framebufferManager.get()->DrawOnFrameBuffer(immediateContext.Get());
 	framebufferManager.get()->BlitMainFrameBufferToScreen(immediateContext.Get());
 	
 	
-	FrameBuffer* frameBuffer = framebufferManager.get()->getFrameBuffer(FrameBufferName::SHADOWFRAMEBUFFER);
-	
-	ImGui::Image(frameBuffer->getShaderResourceView(0), { 640,360 });
-
 
 }
 

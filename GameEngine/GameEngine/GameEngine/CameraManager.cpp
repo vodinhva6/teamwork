@@ -19,8 +19,8 @@ void CameraManager::update()
     //updateViewAndProjectionCamera();
     //updateChangeProjetion();
     //ChangeSize2DProjection();
-    DebugCameraUpdate();
-    updateSceneView();
+    //DebugCameraUpdate();
+    //updateSceneView();
 
 }
 

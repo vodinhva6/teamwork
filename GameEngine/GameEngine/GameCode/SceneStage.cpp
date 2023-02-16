@@ -41,7 +41,7 @@ void SceneStage::draw()
 
 void SceneStage::release()
 {
-    ObjectManager::get()->resetObject();
+    ObjectManager::get()->ClearAllObject();
 }
 
 SceneStage::~SceneStage()

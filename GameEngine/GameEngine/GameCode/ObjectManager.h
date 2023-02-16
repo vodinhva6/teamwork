@@ -4,8 +4,9 @@
 #include "Player.h"
 #include "Background.h"
 #include "OBJ2D.h"
+#include "Scene.h"
 #include <vector>
-
+enum class SceneName;
 class ObjectManager :public SingletonPatternTemplate< ObjectManager>
 {
     friend class SingletonPatternTemplate< ObjectManager>;
@@ -31,12 +32,18 @@ public:
     void CreatePause2DButton();
     void CreateClear2DButton();
     void CreateOver2DButton();
+    void CreateAllObject(SceneName sceneName);
     void createObject3D(int stage);
     void loadObject3D(std::string name);
     void ObjectUpdate(float elapsed_time);
-    void resetObject();
+    void ClearAllObject();
     void ObjectDraw();
 
+
+private:
+    void CreateObjectForTitleScene();
+    void CreateObjectForGameScene();
+    void CreateObjectForClearScene();
 };
 #endif // !OBJECTMANAGER_H
 

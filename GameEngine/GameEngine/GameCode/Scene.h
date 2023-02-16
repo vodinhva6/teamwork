@@ -7,7 +7,14 @@
 #include "ObjectManager.h"
 #include "LightManager.h"
 #include "SpawnEnemyManager.h"
-
+enum class SceneName
+{
+    Title,
+    Game,
+    Over,
+    Clear,
+    Menu
+};
 
 class Scene
 {
@@ -26,6 +33,7 @@ protected:
     int timer;
     int state;
     bool pause;
+    SceneName sceneName;
 };
 
 

@@ -25,7 +25,7 @@ void SceneOver::draw()
 
 void SceneOver::release()
 {
-    ObjectManager::get()->resetObject();
+    ObjectManager::get()->ClearAllObject();
 }
 
 SceneOver::~SceneOver()

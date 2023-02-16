@@ -5,6 +5,7 @@
 #include "InputManager.h"
 SceneGame::SceneGame()
 {
+    sceneName = SceneName::Game;
 }
 
 void SceneGame::reset()
@@ -15,11 +16,9 @@ void SceneGame::reset()
 static int at = 4;
 void SceneGame::init()
 {
-    state = 0;
     timer = 0;
     int stage = SceneManager::get()->getStage();
-    //ObjectManager::get()->createObject3D(stage);
-    pause = false;
+    ObjectManager::get()->CreateAllObject(sceneName);
 }
 
 void SceneGame::update(float elapsed_time)
@@ -41,7 +40,7 @@ void SceneGame::draw()
 
 void SceneGame::release()
 {
-    ObjectManager::get()->resetObject();
+    ObjectManager::get()->ClearAllObject();
 }
 
 

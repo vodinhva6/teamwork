@@ -4,7 +4,8 @@
 #include "GraphicEngine.h"
 #include "InputManager.h"
 #include "AudioManager.h"
-#include "../GameCode/SceneManager.h"
+#include "SceneManager.h"
+#include "DataBase.h"
 Framework::Framework()
 {
 	frameBuffer_SIZE = { 1080,720 };
@@ -337,7 +338,9 @@ int Framework::GameRun()
 	GraphicEngine::get()->Init();
 	InputManager::get()->Init(&hwnd);
 	AudioManager::get()->Init();
+	DataBase::get()->CreateAllObject();
 	SceneManager::get()->Init();
+	
 	ImGuiSetup();
 
 

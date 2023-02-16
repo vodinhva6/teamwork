@@ -3,7 +3,7 @@
 class SceneTitle :public Scene
 {
 public:
-    SceneTitle() {}
+    SceneTitle();
     void init()  override;
     void update(float elapsed_time)override;
     void draw()  override;

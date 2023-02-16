@@ -4,12 +4,13 @@
 #include "SceneManager.h"
 SceneClear::SceneClear()
 {
+    sceneName = SceneName::Clear;
     
 }
 
 void SceneClear::init()
 {
-
+    ObjectManager::get()->CreateAllObject(sceneName);
 }
 
 void SceneClear::update(float elapsed_time)
@@ -29,7 +30,7 @@ void SceneClear::draw()
 
 void SceneClear::release()
 {
-    ObjectManager::get()->resetObject();
+    ObjectManager::get()->ClearAllObject();
 }
 
 SceneClear::~SceneClear()

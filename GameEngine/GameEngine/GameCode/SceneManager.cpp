@@ -84,7 +84,7 @@ void SceneManager::Init()
     sceneNow = listScene[SCENETITLE].get();
     sceneNext = listScene[SCENETITLE].get();
 
-
+    sceneNow->init();
     exit = false;
 
 }
