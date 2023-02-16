@@ -2,8 +2,6 @@
 #include "SpotLight.h"
 #include "PointLight.h"
 #include "ShadowManager.h"
-#include <memory>
-
 #define MAX_SUPP_LIGHTS 20
 
 class LightManager 

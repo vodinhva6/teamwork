@@ -8,23 +8,26 @@ SceneGame::SceneGame()
     sceneName = SceneName::Game;
 }
 
-void SceneGame::reset()
-{
-    release();
-}
+//void SceneGame::reset()
+//{
+//    release();
+//}
 
 static int at = 4;
 void SceneGame::init()
 {
-    timer = 0;
-    // int stage = SceneManager::get()->getStage();
-    ObjectManager::get()->CreateAllObject(sceneName);
+    Scene::init();
+
+    int stage = SceneManager::get()->getStage();
 }
 
 void SceneGame::update(float elapsed_time)
 {
     ToSpawnEnemy();
     ObjectManager::get()->ObjectUpdate(elapsed_time);
+    if (InputManager::get()->getControlPad()->PressBack(0))
+        SceneManager::get()->changeScene(SCENEMENU, 0);
+
     if (InputManager::get()->getMousePoint()->onClick())
         SceneManager::get()->changeScene(SCENECLEAR, 60);
     timer++;
@@ -40,9 +43,8 @@ void SceneGame::draw()
 
 void SceneGame::release()
 {
-    ObjectManager::get()->ClearAllObject();
-}
 
+}
 
 SceneGame::~SceneGame()
 {

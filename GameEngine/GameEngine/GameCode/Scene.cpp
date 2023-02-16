@@ -15,9 +15,23 @@ Scene::Scene()
 
 }
 
+void Scene::init()
+{
+    timer = 0;
+    ObjectManager::get()->CreateAllObject(sceneName);
+}
+
+void Scene::update(float elapsed_time)
+{
+}
+
 void Scene::draw()
 {
     //MousePoint::get()->draw();
+}
+
+void Scene::release()
+{
 }
 
 Scene::~Scene()

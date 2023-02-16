@@ -17,10 +17,8 @@ void SceneTitle::init()
 
 void SceneTitle::update(float elapsed_time)
 {
-    // Transition To SceneStage
-    if (InputManager::get()->getMousePoint()->onClick())
-        SceneManager::get()->changeScene(SCENESTAGE, 30);
-
+    //if (InputManager::get()->getMousePoint()->onClick())
+    //    SceneManager::get()->changeScene(SCENEGAME, 30);
     ObjectManager::get()->ObjectUpdate(elapsed_time);
 }
 
@@ -30,6 +28,8 @@ void SceneTitle::draw()
     ObjectManager::get()->ObjectDraw();
 
     graph->textOut(0, "TITLE", { 500,500 }, 1, { 1,1,1,1 }, 1, false);
+
+
 }
 
 void SceneTitle::release()
