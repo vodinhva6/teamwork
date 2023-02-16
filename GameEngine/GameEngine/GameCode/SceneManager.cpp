@@ -87,6 +87,7 @@ void SceneManager::Init()
     sceneNow->init();
     exit = false;
 
+    stageManager = std::make_unique<StageManager>();
 }
 
 void SceneManager::Update(float elapsedTime)

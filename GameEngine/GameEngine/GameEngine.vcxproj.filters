@@ -445,6 +445,9 @@
     <ClInclude Include="GameCode\SceneManager.h">
       <Filter>GameCode\SceneManager</Filter>
     </ClInclude>
+    <ClInclude Include="GameCode\StageManager.h">
+      <Filter>GameCode\Stage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine\Framework.cpp">
@@ -641,6 +644,9 @@
     </ClCompile>
     <ClCompile Include="GameCode\SceneManager.cpp">
       <Filter>GameCode\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCode\StageManager.cpp">
+      <Filter>GameCode\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
