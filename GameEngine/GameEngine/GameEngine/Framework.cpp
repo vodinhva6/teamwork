@@ -370,6 +370,8 @@ int Framework::GameRun()
 			GraphicEngine::get()->RemoveQueneObject();
 			ImGuiRender();
 			PresentFrame();
+			if (GraphicEngine::get()->getExitGame())
+				break;
 		}
 	}
 

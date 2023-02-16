@@ -1,7 +1,7 @@
 ﻿#include "OBJ2D.h"
-//#include "Scene.h"
 #include "MyMath.h"
 #include "GraphicEngine.h"
+#include "InputManager.h"
 OBJ2D::OBJ2D()
 {
     timer = 0;
@@ -94,15 +94,15 @@ EndButton::EndButton()
 
 void EndButton::update()
 {
-    //if (MousePoint::get()->onClickTrigger(*this))
-    //{
-    //    GraphicEngine::get()->setExitGame(true);
-    //}
-    //if (MousePoint::get()->onTriggerNoMoveEnble(*this))
-    //{
-    //    color_ = { 0.5f, 0.5f, 0.5f, 1 };
-    //}
-    //else color_ = { 1, 1, 1, 1 };
+    if (InputManager::get()->getMousePoint()->onClickTrigger(*this))
+    {
+        GraphicEngine::get()->setExitGame(true);
+    }
+    if (InputManager::get()->getMousePoint()->onTriggerNoMoveEnble(*this))
+    {
+        color_ = { 0.5f, 0.5f, 0.5f, 1 };
+    }
+    else color_ = { 1, 1, 1, 1 };
 }
 
 void EndButton::draw()

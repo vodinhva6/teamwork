@@ -114,7 +114,7 @@ void DataBase::CreateAllObject()
 #if 1
     startButton_ = new StartButton;
     startButton_->spr_ = graphicEngine->createSprite(L"./Data/Asset/Images/Sprites/Start.png");
-    startButton_->position_ = { 860, 800 };
+    startButton_->position_ = { 860, 200 };
     startButton_->scale_ = { 1, 1 };
     startButton_->color_ = { 1, 1, 1, 1 };
     startButton_->size_ = 1;
@@ -124,7 +124,7 @@ void DataBase::CreateAllObject()
 
     endButton_ = new EndButton;
     endButton_->spr_ = graphicEngine->createSprite(L"./Data/Asset/Images/Sprites/End.png");
-    endButton_->position_ = { 1400, 800 };
+    endButton_->position_ = { 500, 200 };
     endButton_->scale_ = { 1, 1 };
     endButton_->color_ = { 1, 1, 1, 1 };
     endButton_->size_ = 1;
