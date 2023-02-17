@@ -275,7 +275,7 @@ void DataBase::CreateAllObject()
     overbecktotitleButton_->texturePosition_ = { 0, 0 };
     overbecktotitleButton_->textureSize_ = { 400, 100 };
     overbecktotitleButton_->hSize_ = { 400, 100 };
-    
+
 #endif
 
 

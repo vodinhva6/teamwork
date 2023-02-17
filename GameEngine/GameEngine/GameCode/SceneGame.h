@@ -14,5 +14,5 @@ private:
 
     void ToSpawnEnemy();
 
-    bool translationToMenuScene;
+    bool transitionToMenuScene;
 };

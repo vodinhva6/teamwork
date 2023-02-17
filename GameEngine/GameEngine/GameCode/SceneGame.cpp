@@ -18,7 +18,7 @@ void SceneGame::init()
 {
     int stage = SceneManager::get()->getStage();
 
-    translationToMenuScene = false;
+    transitionToMenuScene = false;
 
     Scene::init();
 }
@@ -30,7 +30,7 @@ void SceneGame::update(float elapsed_time)
     if (InputManager::get()->getControlPad()->PressBack(0))
     {
         SceneManager::get()->changeScene(SCENEMENU, 0);
-        translationToMenuScene = true;
+        transitionToMenuScene = true;
     }
 
     if (InputManager::get()->getMousePoint()->onClick())
@@ -50,7 +50,7 @@ void SceneGame::draw()
 
 void SceneGame::release()
 {
-    if (translationToMenuScene) return;
+    if (transitionToMenuScene) return;
 
     Scene::release();
 }
