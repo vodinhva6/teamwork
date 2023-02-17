@@ -9,6 +9,7 @@
 #include "Button3DManager.h"
 #include "Button2DManager.h"
 #include "AudioManager.h"
+
 Scene::Scene()
 {
     state = 0;
@@ -23,15 +24,19 @@ void Scene::init()
 
 void Scene::update(float elapsed_time)
 {
+    ObjectManager::get()->ObjectUpdate(elapsed_time);
+
+    timer++;
 }
 
 void Scene::draw()
 {
-    //MousePoint::get()->draw();
+    ObjectManager::get()->ObjectDraw();
 }
 
 void Scene::release()
 {
+    ObjectManager::get()->ClearAllObject();
 }
 
 Scene::~Scene()

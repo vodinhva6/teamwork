@@ -9,31 +9,26 @@ SceneMenu::SceneMenu()
 
 void SceneMenu::init()
 {
-    timer = 0;
-
     sceneName = SceneName::Menu;
 
-    ObjectManager::get()->CreateAllObject(sceneName);
+    Scene::init();
 }
 
 void SceneMenu::update(float elapsed_time)
 {
-    ObjectManager::get()->ObjectUpdate(elapsed_time);
-
     if (InputManager::get()->getControlPad()->PressBack(0))
         SceneManager::get()->changeScene(SCENEGAME, 0);
+
+    Scene::update(elapsed_time);
 }
 
 void SceneMenu::draw()
 {
     GraphicEngine* graph = GraphicEngine::get();
-    ObjectManager::get()->ObjectDraw();
+
+    Scene::draw();
 
     graph->textOut(0, "Menu", {500, 500}, 1, { 1, 1, 1, 1}, 1);
-}
-
-void SceneMenu::release()
-{
 }
 
 SceneMenu::~SceneMenu()

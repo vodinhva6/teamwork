@@ -1,5 +1,7 @@
 #pragma once
 #include "Scene.h"
+#include "Square.h"
+
 class SceneTitle :public Scene
 {
 public:
@@ -7,7 +9,7 @@ public:
     void init()  override;
     void update(float elapsed_time)override;
     void draw()  override;
-    void release() override;
+    // void release() override;
     ~SceneTitle()override {}
 private:
     Sprite* title;

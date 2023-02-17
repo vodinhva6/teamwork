@@ -241,7 +241,6 @@ void GraphicEngine::textOut(int textNo, const std::string contents, const VECTOR
 
 }
 
-
 void GraphicEngine::drawDebugBounding(GeometricPrimitive* geo, const DirectX::XMFLOAT4X4 world, const VECTOR4& color, const int& type)
 {
 	drawDebugList.push_back(new GeometricPrimitiveData(geo, world, color, type));
@@ -255,6 +254,10 @@ Sprite* GraphicEngine::createSprite(const wchar_t* filename, ShaderData* shaderD
 	else sp.reset(new Sprite(Framework::get()->getDevice(), filename, *shaderData));
 	sprites.push_back(sp);
 	return sprites.back().get();
+}
+
+Square* GraphicEngine::createSquare()
+{
 }
 
 Sprite3D* GraphicEngine::createSprite3D(const wchar_t* filename)

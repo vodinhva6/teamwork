@@ -7,7 +7,7 @@ public:
     void init() override;
     void update(float elapsed_time) override;
     void draw() override;
-    void release() override;
+    //void release() override;
     ~SceneMenu();
 
 private:

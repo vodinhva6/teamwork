@@ -13,6 +13,7 @@
 
 
 #include "Sprite.h"
+#include "Square.h"
 #include "SkinnedMesh.h"
 #include "Sprite3D.h"
 #include "LightManager.h"
@@ -79,11 +80,11 @@ public:
     void drawBackgroudSpriteLate(Sprite* sprite, const VECTOR2& position, const VECTOR2& size, const int& drawTurn);
     void drawBackgroudSpriteEarly(Sprite* sprite, const VECTOR2& position, const VECTOR2& size, const int& drawTurn);
     void textOut(int textNo, const std::string contents, const VECTOR2& position, const float& size, const VECTOR4& color, const int& drawTurn, bool late = true);
-
    
     void drawDebugBounding(GeometricPrimitive* geo, const DirectX::XMFLOAT4X4 world, const VECTOR4& color, const int& type);
 public:
     Sprite* createSprite(const wchar_t* filename, ShaderData* shaderData = nullptr);
+    Square* createSquare();
     Sprite3D* createSprite3D(const wchar_t* filename);
     SkinnedMesh* createSkinnedMesh(const char* fbx_name, bool triangulate, SkinnedMeshObjectAxis axis, ShaderData shaderData = {}, VECTOR3 offsetvertex = { 0,0,0 });
     void createEffect(const char* filename, std::string effName);
@@ -449,6 +450,7 @@ private:
     std::map<std::string, Effect*> effects;
     std::vector<std::shared_ptr<SkinnedMesh>> skinnedMeshes;
     std::vector<std::shared_ptr<Sprite>> sprites;
+    std::vector<std::shared_ptr<Square>> squares;
     std::vector<std::shared_ptr<GeometricPrimitive>> geometricPrimitive;
     std::vector<std::shared_ptr<Sprite3D>> sprites3D;
 
