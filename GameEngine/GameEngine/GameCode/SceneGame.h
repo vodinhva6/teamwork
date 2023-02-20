@@ -4,7 +4,7 @@ class SceneGame : public Scene
 {
 public:
     SceneGame();
-    void reset() override;
+    // void reset() override;
     void init() override;
     void update(float elapsed_time)override;
     void draw()override;
@@ -14,4 +14,5 @@ private:
 
     void ToSpawnEnemy();
 
+    bool transitionToMenuScene;
 };

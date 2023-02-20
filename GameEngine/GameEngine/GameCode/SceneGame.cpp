@@ -8,42 +8,52 @@ SceneGame::SceneGame()
     sceneName = SceneName::Game;
 }
 
-void SceneGame::reset()
-{
-    release();
-}
+//void SceneGame::reset()
+//{
+//    release();
+//}
 
 static int at = 4;
 void SceneGame::init()
 {
-    timer = 0;
-    ObjectManager::get()->CreateAllObject(sceneName);
-    SceneManager::get()->getStageManager()->CreateAllStage2D(0);
+    int stage = SceneManager::get()->getStage();
+
+    transitionToMenuScene = false;
+
+    Scene::init();
 }
 
 void SceneGame::update(float elapsed_time)
 {
     ToSpawnEnemy();
-    ObjectManager::get()->ObjectUpdate(elapsed_time);
+
+    if (InputManager::get()->getControlPad()->PressBack(0))
+    {
+        SceneManager::get()->changeScene(SCENEMENU, 0);
+        transitionToMenuScene = true;
+    }
+
     if (InputManager::get()->getMousePoint()->onClick())
         SceneManager::get()->changeScene(SCENECLEAR, 60);
-    timer++;
+
+    Scene::update(elapsed_time);
 }
 
 void SceneGame::draw()
 {
     GraphicEngine* graph = GraphicEngine::get();
-    SceneManager::get()->getStageManager()->StageDraw();
-    ObjectManager::get()->ObjectDraw();
+
+    Scene::draw();
 
     graph->textOut(0, "GAME", { 500,500 }, 1, { 1,1,1,1 }, 1, false);
 }
 
 void SceneGame::release()
 {
-    ObjectManager::get()->ClearAllObject();
-}
+    if (transitionToMenuScene) return;
 
+    Scene::release();
+}
 
 SceneGame::~SceneGame()
 {

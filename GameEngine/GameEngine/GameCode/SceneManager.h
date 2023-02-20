@@ -1,7 +1,6 @@
 #pragma once
 #include "SingletonPatternTemplate.h"
 #include "Scene.h"
-#include "StageManager.h"
 
 #define SCENESTAGE "SCENESTAGE"
 #define SCENETITLE "SCENETITLE"
@@ -32,8 +31,7 @@ public:
     bool changeScene(std::string sceneName, int delayTimer);
     Sprite* loadingScr[2];
 
-    StageManager* getStageManager() { return stageManager.get(); }
-    
+    int getStage() { return stage; }
     void saveGame();
     void loadGame();
     bool checkHadFileLoadGame();
@@ -44,7 +42,7 @@ private:
     std::map<std::string, std::shared_ptr<Scene>> listScene;
     Scene* sceneNow;
     Scene* sceneNext;
-    std::unique_ptr<StageManager> stageManager;
+    int stage;
     int timer;
 };
 

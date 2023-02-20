@@ -112,6 +112,7 @@ void ObjectManager::CreateAllObject(SceneName sceneName)
         CreateObjectForClearScene();
         break;
     case SceneName::Menu:
+        CreateObjectForMenuScene();
         break;
     default:
         break;
@@ -222,17 +223,29 @@ void ObjectManager::ObjectDraw()
 
 void ObjectManager::CreateObjectForTitleScene()
 {
+    Button* startButton = DataBase::get()->CreateStartButton();
     Button* exitButton = DataBase::get()->CreateEndButton();
+
+    object2DList.push_back(startButton);
     object2DList.push_back(exitButton);
 }
 
 void ObjectManager::CreateObjectForGameScene()
 {
+    Button* startButton = DataBase::get()->CreateStartButton();
 
+    object2DList.push_back(startButton);
 }
 
 void ObjectManager::CreateObjectForClearScene()
 {
 
+}
+
+void ObjectManager::CreateObjectForMenuScene()
+{
+    Button* endButton = DataBase::get()->CreateEndButton();
+
+    object2DList.push_back(endButton);
 }
 

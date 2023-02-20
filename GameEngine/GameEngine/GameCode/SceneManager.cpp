@@ -87,7 +87,6 @@ void SceneManager::Init()
     sceneNow->init();
     exit = false;
 
-    stageManager = std::make_unique<StageManager>();
 }
 
 void SceneManager::Update(float elapsedTime)
@@ -106,16 +105,9 @@ void SceneManager::UpdateChangeScene()
     {
         if (sceneNow != sceneNext)
         {
-            if (sceneNext != listScene["SCENEMENU"].get())
-            {
-                sceneNow->release();
-            }
-
+            sceneNow->release();
+            sceneNext->init();
             sceneNow = sceneNext;
-            sceneNow->init();
-            //sceneNow->release();
-            //sceneNext->init();
-            //sceneNow = sceneNext;
         }
     }
     else timer--;

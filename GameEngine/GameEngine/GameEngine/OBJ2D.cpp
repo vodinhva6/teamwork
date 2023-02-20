@@ -2,6 +2,8 @@
 #include "MyMath.h"
 #include "GraphicEngine.h"
 #include "InputManager.h"
+#include "SceneManager.h"
+
 OBJ2D::OBJ2D()
 {
     timer = 0;
@@ -68,15 +70,15 @@ StartButton::StartButton()
 
 void StartButton::update()
 {
-    //if (MousePoint::get()->onClickTrigger(*this))
-    //{
-    //    SceneManager::get()->changeScene(SCENESTAGE, 0);
-    //}
-    //if (MousePoint::get()->onTriggerNoMoveEnble(*this))
-    //{
-    //    color_ = { 0.5f, 0.5f, 0.5f, 1 };
-    //}
-    //else color_ = { 1, 1, 1, 1 };
+    if (InputManager::get()->getMousePoint()->onClickTrigger(*this))
+    {
+        SceneManager::get()->changeScene(SCENEGAME, 0);
+    }
+    if (InputManager::get()->getMousePoint()->onTriggerNoMoveEnble(*this))
+    {
+        color_ = { 0.5f, 0.5f, 0.5f, 1 };
+    }
+    else color_ = { 1, 1, 1, 1 };
 }
 
 void StartButton::draw()

@@ -12,29 +12,25 @@ SceneTitle::SceneTitle()
 void SceneTitle::init()
 {
     state = 0;
-    ObjectManager::get()->CreateAllObject(sceneName);
+    square = GraphicEngine::get()->createSquare();
+
+    Scene::init();
 }
 
 void SceneTitle::update(float elapsed_time)
 {
-    if (InputManager::get()->getMousePoint()->onClick())
-        SceneManager::get()->changeScene(SCENEGAME, 30);
-    int b = 2;
-    int a = 1;
-    ObjectManager::get()->ObjectUpdate(elapsed_time);
+    //if (InputManager::get()->getMousePoint()->onClick())
+    //    SceneManager::get()->changeScene(SCENEGAME, 30);
+    Scene::update(elapsed_time);
 }
 
 void SceneTitle::draw()
 {
     GraphicEngine* graph = GraphicEngine::get();
-    ObjectManager::get()->ObjectDraw();
+
+    Scene::draw();
+
+    graph->drawSquare(square, { 100, 100 }, { 200, 200 }, 1, 1, 1, 1);
 
     graph->textOut(0, "TITLE", { 500,500 }, 1, { 1,1,1,1 }, 1, false);
-
-
-}
-
-void SceneTitle::release()
-{
-    ObjectManager::get()->ClearAllObject();
 }

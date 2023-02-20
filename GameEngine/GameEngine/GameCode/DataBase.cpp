@@ -114,7 +114,7 @@ void DataBase::CreateAllObject()
 #if 1
     startButton_ = new StartButton;
     startButton_->spr_ = graphicEngine->createSprite(L"./Data/Asset/Images/Sprites/Start.png");
-    startButton_->position_ = { 860, 200 };
+    startButton_->position_ = { 460, 64 };
     startButton_->scale_ = { 1, 1 };
     startButton_->color_ = { 1, 1, 1, 1 };
     startButton_->size_ = 1;
@@ -288,7 +288,7 @@ void DataBase::CreateAllObject()
     overbecktotitleButton_->texturePosition_ = { 0, 0 };
     overbecktotitleButton_->textureSize_ = { 400, 100 };
     overbecktotitleButton_->hSize_ = { 400, 100 };
-    
+
 #endif
 
 

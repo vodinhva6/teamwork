@@ -13,6 +13,7 @@
 
 
 #include "Sprite.h"
+#include "Square.h"
 #include "SkinnedMesh.h"
 #include "Sprite3D.h"
 #include "LightManager.h"
@@ -76,14 +77,25 @@ public:
         const VECTOR2& texture_position, const VECTOR2& texture_size,
         const float& angle, const int& drawTurn
     );
+    void drawSquare(Square* square,
+        const VECTOR2& drawPosition,
+        const VECTOR2& size,
+        const VECTOR4& color
+    );
+    void drawSquare(Square* square,
+        const VECTOR2& topLeftPosition,
+        const VECTOR2& rightBottomPosition,
+        float r, float g, float b, float a
+    );
+
     void drawBackgroudSpriteLate(Sprite* sprite, const VECTOR2& position, const VECTOR2& size, const int& drawTurn);
     void drawBackgroudSpriteEarly(Sprite* sprite, const VECTOR2& position, const VECTOR2& size, const int& drawTurn);
     void textOut(int textNo, const std::string contents, const VECTOR2& position, const float& size, const VECTOR4& color, const int& drawTurn, bool late = true);
-
    
     void drawDebugBounding(GeometricPrimitive* geo, const DirectX::XMFLOAT4X4 world, const VECTOR4& color, const int& type);
 public:
     Sprite* createSprite(const wchar_t* filename, ShaderData* shaderData = nullptr);
+    Square* createSquare();
     Sprite3D* createSprite3D(const wchar_t* filename);
     SkinnedMesh* createSkinnedMesh(const char* fbx_name, bool triangulate, SkinnedMeshObjectAxis axis, ShaderData shaderData = {}, VECTOR3 offsetvertex = { 0,0,0 });
     void createEffect(const char* filename, std::string effName);
@@ -214,6 +226,7 @@ private:
     class SkinnedMeshData;
     class EffectData;
     class Sprite3DData;
+    class SquareData;
     class ObjectDrawData
     {
     public:
@@ -223,6 +236,7 @@ private:
         virtual SkinnedMeshData* getSkinnedMeshData() { return nullptr; }
         virtual EffectData* getEffectData() { return nullptr; }
         virtual Sprite3DData* getSprite3D() { return nullptr; }
+        virtual SquareData* getSquareData() { return nullptr; }
         virtual ~ObjectDrawData() {}
         DrawStates drawState_;
         int drawTurn_;
@@ -274,6 +288,29 @@ private:
 
         ~SpritesData() override {}
     };
+    class SquareData : public ObjectDrawData
+    {
+    public:
+        SquareData(Square* square, const VECTOR2& positionBegin, const VECTOR2& positionEnd,
+            const VECTOR2& size, const VECTOR4& color, DrawStates drawStates, bool useBeginAndEnd) : ObjectDrawData(),
+    		square_(square), positionBegin_(positionBegin), positionEnd_(positionEnd), size_(size), color_(color), useBeginAndEnd_(useBeginAndEnd)
+        {
+            this->drawState_ = drawStates;
+            this->drawTurn_ = 1;
+        }
+        SquareData* getSquareData() override { return this; }
+
+        ~SquareData() override = default;
+
+        Square* square_;
+        VECTOR2 positionBegin_;
+        VECTOR2 positionEnd_;
+        VECTOR2 size_;
+        VECTOR4 color_;
+
+        bool useBeginAndEnd_;
+    };
+
     class GeometricPrimitiveData : public ObjectDrawData
     {
     public:
@@ -449,6 +486,7 @@ private:
     std::map<std::string, Effect*> effects;
     std::vector<std::shared_ptr<SkinnedMesh>> skinnedMeshes;
     std::vector<std::shared_ptr<Sprite>> sprites;
+    std::vector<std::shared_ptr<Square>> squares;
     std::vector<std::shared_ptr<GeometricPrimitive>> geometricPrimitive;
     std::vector<std::shared_ptr<Sprite3D>> sprites3D;
 
@@ -457,6 +495,7 @@ private:
     std::vector<ObjectDrawData*> invisibleDataObjects;
     std::vector<ObjectDrawData*> Object2DListEarly;
     std::vector<ObjectDrawData*> Object2DListLate;
+    std::vector<ObjectDrawData*> ObjectSquareList;
     std::vector<ObjectDrawData*> sprites3DList;
     std::vector<ObjectDrawData*> drawDebugList;
 
