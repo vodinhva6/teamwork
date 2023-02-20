@@ -1,14 +1,42 @@
 #include "StageManager.h"
-#include "Framework.h"
+#include "DataBase.h"
 
 StageManager::StageManager()
 {
-    spr_ = new Sprite(Framework::get()->getDevice(), L"./Data/Asset/Stage/stage.png");
-    position_ = { Framework::get()->getScreenWidth() * 0.5f, Framework::get()->getScreenHeight() * 0.5f};
 
 }
 
-void StageManager::draw()
+void StageManager::CreateAllStage2D(int stageNo)
 {
+	switch (stageNo)
+	{
+	case StageNo::Stage1:
+		Create2DStage1();
+		break;
 
+	case StageNo::Stage2:
+
+		break;
+
+	case StageNo::Stage3:
+
+		break;
+	}
 }
+
+void StageManager::StageDraw()
+{
+	for (auto it : stage2DList)
+	{
+		it->draw();
+	}
+}
+
+void StageManager::Create2DStage1()
+{
+	DataBase* database = DataBase::get();
+
+	Stage2D* stage2d = DataBase::get()->CreateStage2D1();
+	stage2DList.push_back(stage2d);
+}
+

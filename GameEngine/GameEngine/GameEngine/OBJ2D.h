@@ -202,6 +202,13 @@ public:
 };
 #endif
 
+//SceneGame
+class Stage2D : public OBJ2D
+{
+public:
+    void update() override {};
+};
+
 // SceneClear
 #if 1
 class ClearButton : public Button

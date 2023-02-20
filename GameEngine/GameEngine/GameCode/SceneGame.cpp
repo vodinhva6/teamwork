@@ -18,6 +18,7 @@ void SceneGame::init()
 {
     timer = 0;
     ObjectManager::get()->CreateAllObject(sceneName);
+    SceneManager::get()->getStageManager()->CreateAllStage2D(0);
 }
 
 void SceneGame::update(float elapsed_time)
@@ -32,6 +33,7 @@ void SceneGame::update(float elapsed_time)
 void SceneGame::draw()
 {
     GraphicEngine* graph = GraphicEngine::get();
+    SceneManager::get()->getStageManager()->StageDraw();
     ObjectManager::get()->ObjectDraw();
 
     graph->textOut(0, "GAME", { 500,500 }, 1, { 1,1,1,1 }, 1, false);

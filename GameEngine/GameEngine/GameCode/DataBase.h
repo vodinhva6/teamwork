@@ -23,6 +23,8 @@ public:
     Stage1Button* CreateStage1Button();
     Stage2Button* CreateStage2Button();
     Stage3Button* CreateStage3Button();
+    //SceneGame
+    Stage2D* CreateStage2D1();
     // Pause
     ContinueButton* CreateContinueButton();
     RetryButton* CreateRetryButton();
@@ -52,6 +54,8 @@ private:
     Stage1Button* stage1Button_;
     Stage2Button* stage2Button_;
     Stage3Button* stage3Button_;
+    //SceneGame
+    Stage2D* stage2d1_;
     // Pause
     ContinueButton* continueButton_;
     RetryButton* retryButton_;
