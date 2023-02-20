@@ -40,15 +40,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     dpiX = static_cast<FLOAT>(GetDeviceCaps(screen, LOGPIXELSX));
     dpiY = static_cast<FLOAT>(GetDeviceCaps(screen, LOGPIXELSY));
     ReleaseDC(0, screen);
-    int width = (int)(dpiX * Framework::get()->getScreenWidth() / 96);
-    int height = (int)(dpiY * Framework::get()->getScreenHeight() / 96);
+    int width = (int)(Framework::get()->getScreenWidth());
+    int height = (int)(Framework::get()->getScreenHeight());
     //UINT dpi = GetDpiForSystem();
 
     hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW ^ WS_MAXIMIZEBOX ^ WS_THICKFRAME | WS_VISIBLE,
         0, 0, width, height, nullptr, nullptr, hInstance, nullptr);
     //SetWindowPos(hWnd, NULL, 0, 0, (int)(dpiX * framework.getScreenWidth() / 96), (int)(dpiY * framework.getScreenHeight() / 96), SWP_NOZORDER | SWP_NOMOVE);
     
-    
+    ShowWindow(hWnd, nCmdShow);
+    {
+        LONG lStyle = GetWindowLong(hWnd, GWL_STYLE);
+        lStyle &= ~(WS_CAPTION | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU);
+        SetWindowLong(hWnd, GWL_STYLE, lStyle);
+    }
     
     HACCEL hAccelTable;
 #ifdef _DEBUG

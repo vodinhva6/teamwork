@@ -181,8 +181,35 @@ void GraphicEngine::drawSpriteEarly(Sprite* sprite, const VECTOR2& position, con
 	drawStates.drawType = DrawType::Picture;
 
 	Object2DListEarly.push_back(new SpritesData(sprite, position, size, color, texture_position, texture_size, angle, drawTurn, drawStates, contents));
+}
 
+void GraphicEngine::drawSquare(const VECTOR2& drawPosition, const VECTOR2& size, const VECTOR4& color)
+{
+	DrawStates drawStates;
+	drawStates.blendState = BlendStates::Alpha;
+	drawStates.depthState = DepthStencilStates::DepthTestOff_DepthWriteOff;
+	drawStates.rasterizerState = RasterizerStates::CullingOpposition;
+	drawStates.samplerState = SamplerStates::Linear;
+	drawStates.drawType = DrawType::BACKGROUND;
 
+	ShaderData shaderData = { "Data/Shaders/SquareVS.cso", "Data/Shaders/SquarePS.cso" };
+
+	ObjectSquareList.push_back(new SquareData(std::make_unique<SquarePrimitive>(Framework::get()->getDevice(), shaderData), drawPosition, drawPosition, size, color, drawStates, false));
+}
+
+void GraphicEngine::drawSquare(const VECTOR2& topLeftPosition, const VECTOR2& rightBottomPosition,
+	float r, float g, float b, float a)
+{
+	DrawStates drawStates;
+	drawStates.blendState = BlendStates::Alpha;
+	drawStates.depthState = DepthStencilStates::DepthTestOff_DepthWriteOff;
+	drawStates.rasterizerState = RasterizerStates::CullingOpposition;
+	drawStates.samplerState = SamplerStates::Linear;
+	drawStates.drawType = DrawType::BACKGROUND;
+
+	ShaderData shaderData = { "Data/Shaders/SquareVS.cso", "Data/Shaders/SquarePS.cso" };
+
+	ObjectSquareList.push_back(new SquareData(std::make_unique<SquarePrimitive>(Framework::get()->getDevice(), shaderData), topLeftPosition, rightBottomPosition, { 1, 1 }, { r, g, b, a }, drawStates, true));
 }
 
 void GraphicEngine::drawBackgroudSpriteLate(Sprite* sprite, const VECTOR2& position, const VECTOR2& size, const int& drawTurn)
@@ -254,10 +281,6 @@ Sprite* GraphicEngine::createSprite(const wchar_t* filename, ShaderData* shaderD
 	else sp.reset(new Sprite(Framework::get()->getDevice(), filename, *shaderData));
 	sprites.push_back(sp);
 	return sprites.back().get();
-}
-
-Square* GraphicEngine::createSquare()
-{
 }
 
 Sprite3D* GraphicEngine::createSprite3D(const wchar_t* filename)
@@ -353,6 +376,12 @@ void GraphicEngine::RemoveQueneObject()
 	}
 	Object2DListEarly.clear();
 
+	for (int i = 0; i < ObjectSquareList.size(); i++)
+	{
+		SafeDelete(ObjectSquareList[i]);
+	}
+	ObjectSquareList.clear();
+
 	for (auto it : drawDebugList)
 		if (it) SafeDelete(it);
 	drawDebugList.clear();
@@ -386,7 +415,6 @@ void GraphicEngine::Draw2D(bool late)
 		}
 	}
 
-
 	for (int i = 0; i < list->size(); i++)
 	{
 		SpritesData* data = (*list)[i]->getSpritesData();
@@ -415,6 +443,26 @@ void GraphicEngine::Draw2D(bool late)
 				data->size_.x, data->size_.y, data->color_.x, data->color_.y, data->color_.z, data->color_.w
 			);
 			break;
+		}
+	}
+
+	list = &ObjectSquareList;
+
+	for (int i = 0; i < list->size(); i++)
+	{
+		SquareData* data = (*list)[i]->getSquareData();
+
+		if (data->useBeginAndEnd_)
+		{
+			data->square_->render(immediateContext.Get(), data->positionBegin_.x, data->positionBegin_.y,
+				data->positionEnd_.x, data->positionEnd_.y, 0.0f,
+				data->color_.x, data->color_.y, data->color_.z, data->color_.w
+			);
+		}
+		else
+		{
+			data->square_->render(immediateContext.Get(), data->positionBegin_.x, data->positionBegin_.y, data->size_.x, data->size_.y,
+				data->color_.x, data->color_.y, data->color_.z, data->color_.w);
 		}
 	}
 }

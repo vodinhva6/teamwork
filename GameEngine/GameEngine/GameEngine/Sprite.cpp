@@ -410,27 +410,28 @@ void Sprite::draw(ID3D11DeviceContext* immediate_context)
     UINT offset{ 0 };
     immediate_context->IASetVertexBuffers(0, 1, vertex_buffer.GetAddressOf(), &stride, &offset);
     immediate_context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
-    //immediate_context->IASetInputLayout(input_layout.Get());
-    //immediate_context->VSSetShader(vertex_shader.Get(), nullptr, 0);
-    //immediate_context->PSSetShader(pixel_shader.Get(), nullptr, 0);
+    immediate_context->IASetInputLayout(input_layout.Get());
+    immediate_context->VSSetShader(vertex_shader.Get(), nullptr, 0);
+    immediate_context->PSSetShader(pixel_shader.Get(), nullptr, 0);
     immediate_context->PSSetShaderResources(0, 1, shader_resource_view.GetAddressOf());
     immediate_context->Draw(4, 0);
 }
 
 void Sprite::createShaderData(ID3D11Device* device, ShaderData shaderData)
 {
+    ShaderManager* shaderManager = GraphicEngine::get()->getShaderManager();
 
-   /* D3D11_INPUT_ELEMENT_DESC input_element_desc[]
+    D3D11_INPUT_ELEMENT_DESC input_element_desc[]
     {
         { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
         { "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0,D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
         { "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0,D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
     };
 
-    HRESULT hr = ShaderManager::get()->create_vs_from_cso(device, shaderData.vsfile, vertex_shader.GetAddressOf(), input_layout.GetAddressOf(), input_element_desc, _countof(input_element_desc));
+    HRESULT hr = shaderManager->createVSFromFile_cso(device, shaderData.vsfile, vertex_shader.GetAddressOf(), input_layout.GetAddressOf(), input_element_desc, _countof(input_element_desc));
     _ASSERT_EXPR(SUCCEEDED(hr), hr_trace(hr));
-    hr = ShaderManager::get()->create_ps_from_cso(device, shaderData.psfile, pixel_shader.GetAddressOf());
-    _ASSERT_EXPR(SUCCEEDED(hr), hr_trace(hr));*/
+    hr = shaderManager->createPSFromFile_cso(device, shaderData.psfile, pixel_shader.GetAddressOf());
+    _ASSERT_EXPR(SUCCEEDED(hr), hr_trace(hr));
 
 }
 
@@ -464,7 +465,10 @@ void Sprite::createVertexData(ID3D11Device* device, const wchar_t* filename)
     HRESULT hr = device->CreateBuffer(&buffer_desc, &subresource_data, vertex_buffer.GetAddressOf());
     _ASSERT_EXPR(SUCCEEDED(hr), hr_trace(hr));
 
-    TextureManager* textureManager = GraphicEngine::get()->getTextureManager();
-    hr = textureManager->loadTextureFromFile(device, filename, shader_resource_view.GetAddressOf(), &texture2d_desc);
-    _ASSERT_EXPR(SUCCEEDED(hr), hr_trace(hr));
+    if (filename != L"")
+    {
+        TextureManager* textureManager = GraphicEngine::get()->getTextureManager();
+        hr = textureManager->loadTextureFromFile(device, filename, shader_resource_view.GetAddressOf(), &texture2d_desc);
+        _ASSERT_EXPR(SUCCEEDED(hr), hr_trace(hr));
+    }
 }

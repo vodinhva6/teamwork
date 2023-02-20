@@ -1,6 +1,5 @@
 #pragma once
 #include "Scene.h"
-#include "Square.h"
 
 class SceneTitle :public Scene
 {

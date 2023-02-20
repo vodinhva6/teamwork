@@ -53,6 +53,17 @@ bool MousePoint::onClick()
     return a;
 }
 
+bool MousePoint::HoldClick()
+{
+    bool a = InputManager::get()->getControlPad()->HoldeA(0);
+    if (a)
+    {
+        resetCountDown();
+        //AudioManager::get()->play(EFFECT, EFFECT_SELECT);
+    }
+    return a;
+}
+
 void MousePoint::draw()
 {
     

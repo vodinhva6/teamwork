@@ -51,7 +51,6 @@ public:
     ~OBJ2D();
 };
 
-
 class TutorialTable : public OBJ2D
 {
 public:
@@ -201,6 +200,13 @@ public:
     ~BackToTitleButton();
 };
 #endif
+
+//SceneGame
+class Stage2D : public OBJ2D
+{
+public:
+    void update() override {};
+};
 
 // SceneClear
 #if 1

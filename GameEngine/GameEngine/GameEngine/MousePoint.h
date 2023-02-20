@@ -13,6 +13,7 @@ public:
         return mousePosition.x - oldPos.x;
     }
     bool onClick();
+    bool HoldClick();
     void draw();
     void setStopSetWheelValue(bool set) { stopSetWheelValue = set; }
     void setFirstPersonMouseNotShow(bool set) { firstPersonMouseNotShow = set; }

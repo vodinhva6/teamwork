@@ -166,6 +166,19 @@ void DataBase::CreateAllObject()
     //stage3Button_->hSize_ = { 150, 150 };
 #endif
 
+    //SceneGame
+#if 1
+    stage2d1_ = new Stage2D;
+    stage2d1_->spr_ = graphicEngine->createSprite(L"./Data/Asset/Images/Sprites/stage.png");
+    stage2d1_->position_ = { 315.0f,35.0f};
+    stage2d1_->scale_ = { 1,1 };
+    stage2d1_->color_ = { 1,1,1,1 };
+    stage2d1_->size_ = 1;
+    stage2d1_->texturePosition_ = { 0,0 };
+    stage2d1_->textureSize_ = { 650,650 };
+    stage2d1_->hSize_ = { 650,650 };
+#endif
+
     // Pause
 #if 1
     continueButton_ = new ContinueButton;
@@ -275,7 +288,7 @@ void DataBase::CreateAllObject()
     overbecktotitleButton_->texturePosition_ = { 0, 0 };
     overbecktotitleButton_->textureSize_ = { 400, 100 };
     overbecktotitleButton_->hSize_ = { 400, 100 };
-    
+
 #endif
 
 
@@ -360,6 +373,16 @@ Stage3Button* DataBase::CreateStage3Button()
     Stage3Button* button = nullptr;
     button = new Stage3Button(*stage3Button_);
     return button;
+}
+#endif
+
+//SceneGame
+#if 1
+Stage2D* DataBase::CreateStage2D1()
+{
+    Stage2D* stage2d = nullptr;
+    stage2d = new Stage2D(*stage2d1_);
+    return stage2d;
 }
 #endif
 
